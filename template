@@ -24,7 +24,7 @@ function main()
 	if [[ "$ret_status" -eq 0 ]]; then
 		echo "$result"
 	else
-		echo "Error cannot use the modulus operation with 0 as the second operand."
+		echo "Error : cannot use the modulus operation with 0 as the second operand."
 	fi
 	
 	return $ret_status
