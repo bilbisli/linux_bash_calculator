@@ -6,11 +6,9 @@ b=$2
 multiply () {
 local ans=`expr $a \* $b`
 echo "$ans";
+return "0"
 }
 
-main(){
-	echo $(multiply $1 $2)
-}
+multiply
 
-main a b
 
