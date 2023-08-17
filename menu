@@ -1,0 +1,74 @@
+#!/bin/bash
+echo " ###################################################"
+echo " #                                                 #"
+echo " #           Chose a math operator:                #"
+echo " #                                                 #"
+echo " ###################################################"
+echo "
+	a. Add
+	b. Subtract
+	c. Multiply
+	d. Divide
+	e. Power of
+	f. Modulos
+	g. Exit
+"
+read menu
+
+echo " ###################################################"
+echo " #                                                 #"
+echo " #              Enter two integers:                #"
+echo " #                                                 #"
+echo " ###################################################"
+echo ""
+read num1 num2
+
+case $menu in
+
+  a)
+    ./math_operations/add $num1 $num2
+    ./math_operations/is_prime $num1 $num2
+    ./math_operations/is_even_odd $num1 $num2
+    ./math_operations/is_div_by5 $num1 $num2
+    ;;
+
+  b)
+    ./math_operations/Subtract $num1 $num2
+    ./math_operations/is_prime $num1 $num2
+    ./math_operations/is_even_odd $num1 $num2
+    ./math_operations/is_div_by5 $num1 $num2
+    ;;
+  c)
+    ./math_operations/multiply $num1 $num2
+    ./math_operations/is_prime $num1 $num2
+    ./math_operations/is_even_odd $num1 $num2
+    ./math_operations/is_div_by5 $num1 $num2
+    ;;
+  d)
+    ./math_operations/divide $num1 $num2
+    ./math_operations/is_prime $num1 $num2
+    ./math_operations/is_even_odd $num1 $num2
+    ./math_operations/is_div_by5 $num1 $num2
+    ;;
+  e)
+    ./math_operations/power_of $num1 $num2
+    ./math_operations/is_prime $num1 $num2
+    ./math_operations/is_even_odd $num1 $num2
+    ./math_operations/is_div_by5 $num1 $num2
+    ;;
+
+  f)
+    ./math_operations/modulus $num1 $num2
+    ./math_operations/is_prime $num1 $num2
+    ./math_operations/is_even_odd $num1 $num2
+    ./math_operations/is_div_by5 $num1 $num2
+    ;;
+  g)
+    ^C
+     ;;
+esac
+
+
+
+
+
