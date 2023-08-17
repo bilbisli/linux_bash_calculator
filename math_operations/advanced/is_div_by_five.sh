@@ -13,6 +13,7 @@ function is_div_by_number()
 		result=false
 	fi
 	echo "$result"
+	
 	return $ret_status
 }
 
