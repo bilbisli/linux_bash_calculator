@@ -18,8 +18,16 @@ function divide()
 
 function main()
 {
-	echo "$(divide $1 $2)"
-	return "$?"
+	result="$(divide $1 $2)"
+	ret_status=$?
+	
+	if [[ "$ret_status" -eq 0 ]]; then
+		echo "$result"
+	else
+		echo "Error : cannot use the divide operation with 0 as the second operand."
+	fi
+	
+	return $ret_status
 }
 
 main "$1" "$2"
