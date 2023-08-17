@@ -1,0 +1,13 @@
+#! /bin/bash
+
+function divide()
+{
+	echo "one: $1 , two: $2"
+}
+
+function main()
+{
+	echo "$(divide $1 $2)"
+}
+
+main $1 $2
