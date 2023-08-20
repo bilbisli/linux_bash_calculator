@@ -1,6 +1,6 @@
 #! /bin/bash
 
-function modulus()
+function power_of()
 {
 	a="$1"
 	b="$2"
@@ -8,9 +8,9 @@ function modulus()
 	ret_status=0
 	
 	if [[ "$b" -eq 0 ]]; then
-		ret_status=1
+		echo "1"
 	else
-		(( res = $a % $b ))
+		(( res = $a ** $b ))
 		echo "$res"
 	fi
 	return $ret_status
@@ -18,7 +18,7 @@ function modulus()
 
 function main()
 {
-	result="$(modulus $1 $2)"
+	result="$(power_of $1 $2)"
 	ret_status=$?
 	
 	if [[ "$ret_status" -eq 0 ]]; then
