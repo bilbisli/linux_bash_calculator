@@ -1,11 +1,12 @@
 #! /bin/bash
 
+
 function is_div_by_number()
 {
-	num="$1"
-	div_by="$2"
-	result=0
-	ret_status=0
+	local num="$1"
+	local div_by="$2"
+	local result=0
+	local ret_status=0
 	
 	if (( $num % $div_by == 0 )); then
 		result=true
@@ -20,10 +21,10 @@ function is_div_by_number()
 
 function is_div_by_five()
 {
-	num="$1"
-	DIV_BY=5
-	result=$(is_div_by_number "$num" "$DIV_BY")
-	ret_status="$?"
+	local num="$1"
+	local DIV_BY=5
+	local result=$(is_div_by_number "$num" "$DIV_BY")
+	local ret_status="$?"
 	
 	if [[ "$ret_status" -eq 0 ]]; then
 		echo "$result"
@@ -36,8 +37,8 @@ function is_div_by_five()
 
 function main()
 {
-	result="$(is_div_by_five $1)"
-	ret_status=$?
+	local result="$(is_div_by_five $1)"
+	local ret_status=$?
 	
 	if [[ "$ret_status" -eq 0 ]]; then
 		echo "$result"
