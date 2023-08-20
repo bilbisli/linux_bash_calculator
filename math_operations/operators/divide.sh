@@ -20,7 +20,7 @@ function divide_base()
 
 function divide()
 {
-	### workaround to handle the pitfall of local declaration changing the return status (#?) - 'divide_base_func_result' must be globaly unique
+	### workaround to handle the pitfall of local declaration changing the return status ($?) - 'divide_base_func_result' must be globaly unique
 	divide_base_func_result=$(divide_base "$1" "$2")	
 	local ret_status="$?"
 	###
@@ -38,7 +38,7 @@ function divide()
 
 function main()
 {
-	### workaround to handle the pitfall of local declaration changing the return status (#?) - 'divide_func_result' must be globaly unique
+	### workaround to handle the pitfall of local declaration changing the return status ($?) - 'divide_func_result' must be globaly unique
 	divide_func_result=$(divide "$1" "$2")
 	local ret_status="$?"
 	###

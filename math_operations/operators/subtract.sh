@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-function substract()
+function subtract()
 {
 	local a="$1"
 	local b="$2"
@@ -13,13 +13,14 @@ function substract()
 	return $ret_status
 }
 
+
 function main()
 {
-	### workaround to handle the pitfall of local declaration changing the return status (#?) - 'substract_func_result' must be globaly unique
-	substract_func_result=$(substract "$1" "$2")
+	### workaround to handle the pitfall of local declaration changing the return status ($?) - 'subtract_func_result' must be globaly unique
+	subtract_func_result=$(subtract "$1" "$2")
 	local ret_status="$?"
 	###
-	local result="$substract_func_result"
+	local result="$subtract_func_result"
 	
 	if [[ "$ret_status" -eq 0 ]]; then
 		echo "$result"

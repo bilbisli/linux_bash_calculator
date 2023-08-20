@@ -14,14 +14,10 @@ function print_paths_to_scripts()
 	#local advanced_math_scripts=("is_prime" "is_even_odd" "is_div_by_five")
 	
 	# basic math operations
-	for (( i=0 ; i < ${#simple_math_scripts[@]} ; ++i )); do
-		echo "${MATH_DIR}${SIMPLE_MATH_SUBDIR}${simple_math_scripts[i]}" 
-	done
+	ls "${MATH_DIR}${SIMPLE_MATH_SUBDIR}" 
 	
 	# advanced math operations
-	for (( i=0 ; i < ${#advanced_math_scripts[@]} ; ++i )); do
-		echo "${MATH_DIR}${ADVANCED_MATH_SUBDIR}${advanced_math_scripts[i]}"
-	done
+	ls "${MATH_DIR}${ADVANCED_MATH_SUBDIR}"
 }
 
 main()

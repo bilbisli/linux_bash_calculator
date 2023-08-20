@@ -6,9 +6,9 @@ function is_even_odd_base()
 	local ret_status=0
 	
 	if (( "$1" % 2 ));then
-		echo "The number is odd"
+		echo "odd"
 	else 
-		echo "The number is even"
+		echo "even"
 	fi
 	
 	return $ret_status	
@@ -22,10 +22,13 @@ function is_even_odd()
 	
 	if [[ $ansFromAns =~ ^[0-9]*\.[0-9]+$ ]]; then
 		 a="${a%%.*}"
+	fi
 	result=$(is_even_odd_base $a)
 	ret_status="$?"
 	
-	return $ret_status 
+	echo "$result"
+	
+	return $ret_status
 }
 
 

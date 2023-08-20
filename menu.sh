@@ -1,6 +1,9 @@
 #!/bin/bash
 
-`./calc_imports`
+# imports - math operations
+for import in ./math_operations/*/*.sh; do
+	. $import
+done
 
 
 function menu()
@@ -8,6 +11,8 @@ function menu()
 	local keep_running_flag=true
 	local exit_option="Exit"
 	local ret_status=0
+	local result=0
+	local advanced_result=0
 	
 	local operations=("Add" "Subtract" "Multiply" "Divide" "Power of" "Modulos")
 	local operations+=("$exit_option")
@@ -33,37 +38,36 @@ function menu()
 		else
 			read -p "Enter two operands for the ${operations[choice - 1]} opration: " operand1 operand2
 			# TODO: add validation of input
-			result=`${MATH_DIR}${SIMPLE_MATH_SUBDIR}${simple_math_scripts[choice - 1]} ${operand1} ${operand2}`
-			result=${result}
-			#if [[ '$?' -ne 0 ]]; then
+			#result=${MATH_DIR}${SIMPLE_MATH_SUBDIR}${simple_math_scripts[choice - 1]} ${operand1} ${operand2}`
+			
+			result=$(${simple_math_scripts[choice - 1]} ${operand1} ${operand2})
+			if [[ "$?" -eq 0 ]]; then
 				echo "The result is: $result"
 				for (( i=0 ; i < ${#advanced_math_scripts[@]} ; ++i )); do
-					advanced_result=`${MATH_DIR}${ADVANCED_MATH_SUBDIR}${advanced_math_scripts[i]} ${result}`
+					#advanced_result=`${MATH_DIR}${ADVANCED_MATH_SUBDIR}${advanced_math_scripts[i]} ${result}`
+					advanced_result=$(${advanced_math_scripts[i]} ${result})
 					echo "${advanced_operations[i]}? $advanced_result"
 				done
-			#fi
+			fi
 		fi
+		echo -e "\n#################################################\n"
 	done
 	
 	return $ret_status
 }
 
+
 function main()
 {
+	menu
+	local ret_status="$?"
 
-	#$menu
-	read -p "enter two numbers: " a b
-	echo "before $a $b"
-	res="$(divide "$a" "$b")"
-	echo $?
-	echo "ret startus: $?"
-	if [[ $? -ne 0 ]]; then
-		echo oh no!
-	fi
-	echo "after"
-	echo "$res"
-	echo "end"
+	exit "$ret_status"
 }
 
-main
+
+# in case of running as a script
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "${@}"
+fi
 

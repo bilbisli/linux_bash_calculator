@@ -19,7 +19,7 @@ function modulus_base()
 
 function modulus()
 {
-	### workaround to handle the pitfall of local declaration changing the return status (#?) - 'modulus_base_func_result' must be globaly unique
+	### workaround to handle the pitfall of local declaration changing the return status ($?) - 'modulus_base_func_result' must be globaly unique
 	modulus_base_func_result=$(modulus_base "$1" "$2")	
 	local ret_status="$?"
 	###
@@ -37,7 +37,7 @@ function modulus()
 
 function main()
 {
-	### workaround to handle the pitfall of local declaration changing the return status (#?) - 'modulus_func_result' must be globaly unique
+	### workaround to handle the pitfall of local declaration changing the return status ($?) - 'modulus_func_result' must be globaly unique
 	modulus_func_result=$(modulus "$1" "$2")
 	local ret_status="$?"
 	###

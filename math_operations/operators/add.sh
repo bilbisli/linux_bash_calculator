@@ -1,15 +1,14 @@
-#!/bin/bash
+#! /bin/bash
 
 
-
-function multiply()
+function add()
 {
 	local a="$1"
 	local b="$2"
-	local ans=`expr $a \* $b`
+	local answer=$(( a+b ))
 	local ret_status=0
 	
-	echo "$ans";
+	echo "$answer"
 	
 	return $ret_status
 }
@@ -17,11 +16,11 @@ function multiply()
 
 function main()
 {
-	### workaround to handle the pitfall of local declaration changing the return status (#?) - 'multiply_func_result' must be globaly unique
-	multiply_func_result=$(multiply "$1" "$2")
+	### workaround to handle the pitfall of local declaration changing the return status ($?) - 'add_func_result' must be globaly unique
+	add_func_result=$(add "$1" "$2")
 	local ret_status="$?"
 	###
-	local result="$multiply_func_result"
+	local result="$add_func_result"
 	
 	if [[ "$ret_status" -eq 0 ]]; then
 		echo "$result"

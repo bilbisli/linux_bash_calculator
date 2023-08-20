@@ -21,7 +21,7 @@ function power_of()
 
 function main()
 {
-	### workaround to handle the pitfall of local declaration changing the return status (#?) - 'power_of_func_result' must be globaly unique
+	### workaround to handle the pitfall of local declaration changing the return status ($?) - 'power_of_func_result' must be globaly unique
 	power_of_func_result=$(power_of "$1" "$2")
 	local ret_status="$?"
 	###

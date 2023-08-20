@@ -1,0 +1,9 @@
+add.sh
+divide.sh
+modulus.sh
+multiply.sh
+power_of.sh
+subtract.sh
+is_div_by_five.sh
+is_even_odd.sh
+is_prime.sh
