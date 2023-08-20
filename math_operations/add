@@ -1,0 +1,16 @@
+#! /bin/bash
+
+function add()
+{
+	local a="$1"
+	local b="$2"
+	local answer=$(( a+b ))
+	echo "$answer"
+}
+function main()
+{
+	echo "$(add $1 $2)"
+	return "$?"
+}
+
+main "$1" "$2"
