@@ -8,8 +8,10 @@ function power_of()
 	local res=0
 	local ret_status=0
 	
-	if [[ "$b" -eq 0 ]]; then
+	if [[ "$b" -eq 0 || "$a" -eq 1 ]]; then
 		echo "1"
+	elif [[ "$b" -lt 0 ]]; then
+		echo "0"
 	else
 		(( res = $a ** $b ))
 		echo "$res"
