@@ -34,34 +34,34 @@ function menu()
 		
 		# menu choice
 		read -p "Choice: " choice
-		if [[ $choice == [1-${#simple_math_scripts[@]}] ]]; then
+		if [[ "$choice" == [1-${#simple_math_scripts[@]}] ]]; then
 			echo "Option chosen: ${operations[choice - 1]}"
+		
+			if [[ "${operations[choice - 1]}" == "$exit_option" ]]; then	# exit condition
+				keep_running_flag=false
+				ret_status=0						# successful return status (0)
+			else								# math operations
+				# operands input
+				read -p "Enter two operands for the ${operations[choice - 1]} opration: " operand1 operand2
+				# operands validation
+				result=$(is_bi_int_operands "$operand1" "$operand2")
+				if [[ "$?" -eq 0 && "$result" == true ]]; then
+					# math operation after input validation
+					result=$(${simple_math_scripts[choice - 1]} ${operand1} ${operand2})
+					if [[ "$?" -eq 0 ]]; then			# math operation success checkup
+						echo "The result is: $result"
+						# advanced math operations on result
+						for (( i=0 ; i < ${#advanced_math_scripts[@]} ; ++i )); do
+							advanced_result=$(${advanced_math_scripts[i]} ${result})
+							echo "${advanced_operations[i]}? $advanced_result"
+						done
+					fi
+				else
+					echo "Error : Invalid input - There must be exactly two integers as operands!" >> /dev/stderr
+				fi
+			fi
 		else
 			echo "Error - no such option."  >> /dev/stderr
-		fi
-		
-		if [[ "${operations[choice - 1]}" == "$exit_option" ]]; then	# exit condition
-			keep_running_flag=false
-			ret_status=0						# successful return status (0)
-		else								# math operations
-			# operands input
-			read -p "Enter two operands for the ${operations[choice - 1]} opration: " operand1 operand2
-			# operands validation
-			result=$(is_bi_int_operands "$operand1" "$operand2")
-			if [[ "$?" -eq 0 && "$result" == true ]]; then
-				# math operation after input validation
-				result=$(${simple_math_scripts[choice - 1]} ${operand1} ${operand2})
-				if [[ "$?" -eq 0 ]]; then			# math operation success checkup
-					echo "The result is: $result"
-					# advanced math operations on result
-					for (( i=0 ; i < ${#advanced_math_scripts[@]} ; ++i )); do
-						advanced_result=$(${advanced_math_scripts[i]} ${result})
-						echo "${advanced_operations[i]}? $advanced_result"
-					done
-				fi
-			else
-				echo "Error : Invalid input - There must be exactly two integers as operands!" >> /dev/stderr
-			fi
 		fi
 		echo -e "\n#################################################\n"
 	done
